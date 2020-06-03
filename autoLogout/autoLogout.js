@@ -16,6 +16,8 @@ function checkDate() {
     now = new Date();
     today = now.getDay(); // Sundey = 0, Monday = 1
     time = now.getHours();  // Hour now between 0 - 23
+    console.log("today: " + today);
+    console.log("time: " + time);
     if ((today == 6) && (time == 0)){ // Only sign users out if they leave their dashboards running on Saturday between 00:00 - 00:59 local time. 
         if (!loggedout) {
             autologout(); // If already logged out once today, do not sign the user out again
