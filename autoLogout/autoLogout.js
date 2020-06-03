@@ -10,16 +10,16 @@ if (loggedout == null) { // First time access, no loggedout key in local storage
     localStorage.setItem('loggedout', loggedout); //Store loggedout value as false fir the first login
 }
 
-if (!loggedout){ // If already logged out once, do not sign the user out again
-    var periodicCheck = setInterval(checkDate, freq); // Check to logout freq milliseconds
-}
+var periodicCheck = setInterval(checkDate, freq); // Check to logout freq milliseconds
 
 function checkDate() {
-    now = new Date()
+    now = new Date();
     today = now.getDay(); // Sundey = 0, Monday = 1
     time = now.getHours();  // Hour now between 0 - 23
-    if (today == 6 && (time == 0)) {  // Only sign users out if they leave their dashboards running on Saturday between 00:00 - 00:59 local time
-        autologout();
+    if ((today == 6) && (time == 0)){ // Only sign users out if they leave their dashboards running on Saturday between 00:00 - 00:59 local time. 
+        if (!loggedout) {
+            autologout(); // If already logged out once today, do not sign the user out again
+        }        
     } else {
         loggedout = false;
         localStorage.setItem('loggedout', loggedout); //Store loggedout value as false for the first login
@@ -30,7 +30,6 @@ function autologout() {
     loggedout = true;
     localStorage.setItem('loggedout', loggedout); //Store loggedout value as true so user is not logged out mutliple times during the logout time window
     console.log("Logging user out");
-    localStorage.clear();
     (function () { (new Image()).src = "https://id.tapaas.com/login/signout"; })();
     console.log("IDP session cleared: " + "https://id.tapaas.com/login/signout");
     (function () { (new Image()).src = "https://testvouch.tapaas.com" + "/logout"; })();

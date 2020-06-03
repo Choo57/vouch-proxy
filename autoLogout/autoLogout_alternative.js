@@ -1,4 +1,5 @@
-// Log users out at 00:00 local PC time every Saturday
+// Log users out at 00:00 local PC time every Saturday if the dashboard was left open over the weekend
+// Only logout on a Saturday
 console.log("Tapaas Autologout initiated");
 
 var freq = 900000  // Frequency in ms to check if autologout time has arrived (900000 ms = 15 minutes)
@@ -12,7 +13,7 @@ if (firstOpenedOn == null) { // First time access, no dates in local storage
     localStorage.setItem('firstOpenedOn', firstOpenedOn); //Store first login time in local timezone of the user
 }
 
-// Check if firstOpenedOn is more than 1 week ago
+// Check if firstOpenedOn is more than 1 week ago (should not be possible as cookie have long been cleared)
 delta = DifferenceInTime(firstOpenedOn);
 if ( delta < -604800000) {// DifferenceInTime originally intended to check if Saturday expired, so passing firstOpenedOn will return a negative sign
     autologout();       
@@ -43,9 +44,10 @@ if (!logout){ // If not logged out already (i.e. Saturday have not already passe
 }
 
 function checkDate() {
+    today = new Date().getDay();
     nextSaturday = localStorage.getItem('nextSaturday');
     delta = DifferenceInTime(nextSaturday);
-    if (delta <= 0) {
+    if (delta <= 0 && today == 6) {  // Only sign users out if they leave their dashboards running on Saturday at 00:00 local time
         autologout();
     }
 }
