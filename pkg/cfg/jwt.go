@@ -27,7 +27,7 @@ func getOrGenerateJWTSecret() string {
 		log.Warn("generating random jwt.secret and storing it in " + secretFile)
 
 		// make sure to create 256 bits for the secret
-		// see https://github.com/vouch/vouch-proxy/issues/54
+		// see https://github.com/Choo57/vouch-proxy/issues/54
 		rstr, err := securerandom.Base64OfBytes(base64Bytes)
 		if err != nil {
 			log.Fatal(err)

@@ -17,8 +17,8 @@ import (
 
 	cache "github.com/patrickmn/go-cache"
 
-	"github.com/vouch/vouch-proxy/pkg/cfg"
-	"github.com/vouch/vouch-proxy/pkg/responses"
+	"github.com/Choo57/vouch-proxy/pkg/cfg"
+	"github.com/Choo57/vouch-proxy/pkg/responses"
 )
 
 // Cache in memory temporary store for responses from /validate for jwt

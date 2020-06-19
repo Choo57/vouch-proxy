@@ -15,7 +15,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/vouch/vouch-proxy/pkg/cfg"
+	"github.com/Choo57/vouch-proxy/pkg/cfg"
 )
 
 func TestLogoutHandler(t *testing.T) {

@@ -1,7 +1,7 @@
 # default values for Vouch Proxy
 # this is related to Env Vars
-# https://github.com/vouch/vouch-proxy/issues/132
-# https://github.com/vouch/vouch-proxy/pull/134
+# https://github.com/Choo57/vouch-proxy/issues/132
+# https://github.com/Choo57/vouch-proxy/pull/134
 
 # you don't want to mess with these
 vouch:

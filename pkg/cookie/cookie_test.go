@@ -16,7 +16,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/vouch/vouch-proxy/pkg/cfg"
+	"github.com/Choo57/vouch-proxy/pkg/cfg"
 )
 
 func init() {

@@ -19,9 +19,9 @@ import (
 
 	"go.uber.org/zap"
 
-	"github.com/vouch/vouch-proxy/pkg/cfg"
-	"github.com/vouch/vouch-proxy/pkg/jwtmanager"
-	"github.com/vouch/vouch-proxy/pkg/responses"
+	"github.com/Choo57/vouch-proxy/pkg/cfg"
+	"github.com/Choo57/vouch-proxy/pkg/jwtmanager"
+	"github.com/Choo57/vouch-proxy/pkg/responses"
 )
 
 var (

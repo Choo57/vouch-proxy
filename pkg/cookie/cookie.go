@@ -18,9 +18,9 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	// "github.com/vouch/vouch-proxy/pkg/structs"
-	"github.com/vouch/vouch-proxy/pkg/cfg"
-	"github.com/vouch/vouch-proxy/pkg/domains"
+	// "github.com/Choo57/vouch-proxy/pkg/structs"
+	"github.com/Choo57/vouch-proxy/pkg/cfg"
+	"github.com/Choo57/vouch-proxy/pkg/domains"
 	"go.uber.org/zap"
 )
 
@@ -175,7 +175,7 @@ func ClearCookie(w http.ResponseWriter, r *http.Request) {
 
 // SameSite return cfg.Cfg.Cookie.SameSite as http.Samesite
 // if cfg.Cfg.Cookie.SameSite is unconfigured return http.SameSite(0)
-// see https://github.com/vouch/vouch-proxy/issues/210
+// see https://github.com/Choo57/vouch-proxy/issues/210
 func SameSite() http.SameSite {
 	sameSite := http.SameSite(0)
 	if cfg.Cfg.Cookie.SameSite != "" {

@@ -18,9 +18,9 @@ import (
 
 	mockhttp "github.com/karupanerura/go-mock-http-response"
 	"github.com/stretchr/testify/assert"
-	"github.com/vouch/vouch-proxy/pkg/cfg"
-	"github.com/vouch/vouch-proxy/pkg/domains"
-	"github.com/vouch/vouch-proxy/pkg/structs"
+	"github.com/Choo57/vouch-proxy/pkg/cfg"
+	"github.com/Choo57/vouch-proxy/pkg/domains"
+	"github.com/Choo57/vouch-proxy/pkg/structs"
 	"golang.org/x/oauth2"
 )
 

@@ -91,7 +91,7 @@ vouch:
     # Set SameSite attribute to restrict browser behaviour wrt sending the cookie along with cross-site requests. - VOUCH_COOKIE_SAMESITE
     # Possible attribute values lax, strict, none.
     # If attribute not specified then cross-site behaviour will depend on the browser used. If sameSite=none then secure must be set to true
-    # More context: https://github.com/vouch/vouch-proxy/issues/210
+    # More context: https://github.com/Choo57/vouch-proxy/issues/210
     sameSite: lax
 
   session:
@@ -130,7 +130,7 @@ vouch:
     # nginx will populate the variables
     #   $auth_resp_x_vouch_idp_claims_groups
     #   $auth_resp_x_vouch_idp_claims_given-name
-    # see https://github.com/vouch/vouch-proxy/issues/183 regarding claims and header naming
+    # see https://github.com/Choo57/vouch-proxy/issues/183 regarding claims and header naming
 
     # claimheader - Customizable claim header prefix (instead of default `X-Vouch-IdP-Claims-`) - VOUCH_HEADERS_CLAIMHEADER
     # claimheader: My-Custom-Claim-Prefix
@@ -221,7 +221,7 @@ oauth:
   token_url: https://{yourOktaDomain}/oauth2/default/v1/token
   user_info_url: https://{yourOktaDomain}/oauth2/default/v1/userinfo
   # end_session_endpoint is usually the IdP's logout URL
-  # see https://github.com/vouch/vouch-proxy/pull/258
+  # see https://github.com/Choo57/vouch-proxy/pull/258
   end_session_endpoint: https://{yourOktaDomain}/oauth2/default/v1/logout
   scopes:
     - openid

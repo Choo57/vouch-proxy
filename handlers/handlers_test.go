@@ -18,12 +18,12 @@ import (
 	"github.com/stretchr/testify/assert"
 	"golang.org/x/oauth2"
 
-	"github.com/vouch/vouch-proxy/pkg/cfg"
-	"github.com/vouch/vouch-proxy/pkg/cookie"
-	"github.com/vouch/vouch-proxy/pkg/domains"
-	"github.com/vouch/vouch-proxy/pkg/jwtmanager"
-	"github.com/vouch/vouch-proxy/pkg/responses"
-	"github.com/vouch/vouch-proxy/pkg/structs"
+	"github.com/Choo57/vouch-proxy/pkg/cfg"
+	"github.com/Choo57/vouch-proxy/pkg/cookie"
+	"github.com/Choo57/vouch-proxy/pkg/domains"
+	"github.com/Choo57/vouch-proxy/pkg/jwtmanager"
+	"github.com/Choo57/vouch-proxy/pkg/responses"
+	"github.com/Choo57/vouch-proxy/pkg/structs"
 )
 
 var (

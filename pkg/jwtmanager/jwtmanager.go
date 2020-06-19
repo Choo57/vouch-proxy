@@ -24,9 +24,9 @@ import (
 	jwt "github.com/dgrijalva/jwt-go"
 	"go.uber.org/zap"
 
-	"github.com/vouch/vouch-proxy/pkg/cfg"
-	"github.com/vouch/vouch-proxy/pkg/cookie"
-	"github.com/vouch/vouch-proxy/pkg/structs"
+	"github.com/Choo57/vouch-proxy/pkg/cfg"
+	"github.com/Choo57/vouch-proxy/pkg/cookie"
+	"github.com/Choo57/vouch-proxy/pkg/structs"
 )
 
 // const numSites = 2

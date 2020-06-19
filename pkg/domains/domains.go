@@ -14,7 +14,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/vouch/vouch-proxy/pkg/cfg"
+	"github.com/Choo57/vouch-proxy/pkg/cfg"
 	"go.uber.org/zap"
 )
 

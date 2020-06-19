@@ -38,14 +38,14 @@ import (
 	"github.com/gorilla/mux"
 	"go.uber.org/zap"
 
-	"github.com/vouch/vouch-proxy/handlers"
-	"github.com/vouch/vouch-proxy/pkg/cfg"
-	"github.com/vouch/vouch-proxy/pkg/cookie"
-	"github.com/vouch/vouch-proxy/pkg/domains"
-	"github.com/vouch/vouch-proxy/pkg/healthcheck"
-	"github.com/vouch/vouch-proxy/pkg/jwtmanager"
-	"github.com/vouch/vouch-proxy/pkg/responses"
-	"github.com/vouch/vouch-proxy/pkg/timelog"
+	"github.com/Choo57/vouch-proxy/handlers"
+	"github.com/Choo57/vouch-proxy/pkg/cfg"
+	"github.com/Choo57/vouch-proxy/pkg/cookie"
+	"github.com/Choo57/vouch-proxy/pkg/domains"
+	"github.com/Choo57/vouch-proxy/pkg/healthcheck"
+	"github.com/Choo57/vouch-proxy/pkg/jwtmanager"
+	"github.com/Choo57/vouch-proxy/pkg/responses"
+	"github.com/Choo57/vouch-proxy/pkg/timelog"
 )
 
 // version and semver get overwritten by build with

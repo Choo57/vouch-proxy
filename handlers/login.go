@@ -19,10 +19,10 @@ import (
 	"strings"
 
 	"github.com/theckman/go-securerandom"
-	"github.com/vouch/vouch-proxy/pkg/cfg"
-	"github.com/vouch/vouch-proxy/pkg/cookie"
-	"github.com/vouch/vouch-proxy/pkg/domains"
-	"github.com/vouch/vouch-proxy/pkg/responses"
+	"github.com/Choo57/vouch-proxy/pkg/cfg"
+	"github.com/Choo57/vouch-proxy/pkg/cookie"
+	"github.com/Choo57/vouch-proxy/pkg/domains"
+	"github.com/Choo57/vouch-proxy/pkg/responses"
 	"golang.org/x/oauth2"
 )
 

@@ -14,8 +14,8 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/vouch/vouch-proxy/pkg/cfg"
-	"github.com/vouch/vouch-proxy/pkg/structs"
+	"github.com/Choo57/vouch-proxy/pkg/cfg"
+	"github.com/Choo57/vouch-proxy/pkg/structs"
 
 	"github.com/stretchr/testify/assert"
 )
