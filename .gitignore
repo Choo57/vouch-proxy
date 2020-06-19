@@ -1,10 +1,3 @@
-vouch
-vouch-proxy
-main
-config/config.yml
-config/*config.yml
-config/config.yml_*
-config/google_config.json
 config/secret
 !config/testing/*
 pkg/model/storage-test.db

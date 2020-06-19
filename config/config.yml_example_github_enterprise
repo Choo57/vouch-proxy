@@ -1,0 +1,45 @@
+# vouch config
+# bare minimum to get vouch running with github enterprise
+# see config.yml_example for all options
+
+vouch:
+  # domains:
+  # valid domains that the jwt cookies can be set into
+  # each of these domains must serve the url https://login.$domains[0] https://login.$domains[1] ...
+  # the callback_urls will be to these domains
+  domains:
+  - yoursite.com
+  - yourothersite.io
+
+  # - OR -
+  # instead of setting specific domains you may prefer to allow all users...
+  # set allowAllUsers: true to use Vouch Proxy to just accept anyone who can authenticate at the configured provider
+  # allowAllUsers: true
+  # set teamWhitelist: to list of teams and/or GitHub organizations
+  # When putting an organization id without a slash, it will allow all (public) members from the organization.
+  # The client will try to read the private organization membership using the client credentials, if that's not possible
+  # due to access restriction, it will try to evaluate the publicly visible membership.
+  # Allowing members form a specific team can be configured by qualifying the team with the organization, separated by
+  # a slash.
+  # teamWhitelist:
+  # - myOrg
+  # - myOrg/myTeam
+  # In case both vouch.teamWhitelist AND oauth.scopes is configured, make sure read:org scope is included
+
+oauth:
+  # create a new OAuth application at:
+  # https://githubenterprise.yoursite.com/settings/applications/new
+  provider: github
+  client_id: xxxxxxxxxxxxxxxxxxxx
+  client_secret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  auth_url: https://githubenterprise.yoursite.com/login/oauth/authorize
+  token_url: https://githubenterprise.yoursite.com/login/oauth/access_token
+  user_info_url: https://githubenterprise.yoursite.com/api/v3/user?access_token=
+  # relevant only if teamWhitelist is configured; colon-prefixed parts are parameters that
+  # will be replaced with the respective values.
+  user_team_url: https://githubenterprise.yoursite.com/api/v3/orgs/:org_id/teams/:team_slug/memberships/:username?access_token=
+  user_org_url: https://githubenterprise.yoursite.com/api/v3/orgs/:org_id/members/:username?access_token=
+  # these GitHub OAuth defaults are set for you..
+  # scopes:
+  #   - user
+  # In case both vouch.teamWhitelist AND oauth.scopes is configured, make sure read:org scope is included

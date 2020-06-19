@@ -159,6 +159,26 @@ func ParseTokenString(tokenString string) (*jwt.Token, error) {
 
 }
 
+// Check for Site matching group in the PAcess Token
+func (claims *VouchClaims) SiteInGroups(site string) bool {
+	log.Debugf("SiteInGroups site: %s", site)
+	token, err := jwt.Parse(claims.PAccessToken, func(token *jwt.Token) (interface{}, error) {
+	    return []byte(cfg.Cfg.JWT.Secret), nil
+	})
+	log.Debugf("jwt.Parsed PAccessToken %v", token)
+	log.Debugf("jwt.Parse error %s", err)
+	paccess, ok := token.Claims.(jwt.MapClaims)
+	log.Debugf("Group Claims: %v", paccess["groups"])
+	log.Debugf("Ok:  %s", ok)
+	for _, gr := range paccess["groups"].([]interface {}) {
+	    if strings.Contains(site, gr.(string)) {
+	        log.Debugf("site %s is found for group %s", site, gr)
+	        return true
+	    }
+	}
+	log.Debugf("site %s not found in groups %v", site, paccess["groups"])
+	return false
+}
 // SiteInClaims does the claim contain the value?
 func (claims *VouchClaims) SiteInClaims(site string) bool {
 	for _, s := range claims.Sites {

@@ -50,15 +50,27 @@ func ValidateRequestHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+    // Replace SiteInClaims with SiteinGroups
 	if !cfg.Cfg.AllowAllUsers {
-		if !claims.SiteInClaims(r.Host) {
+		if !claims.SiteInGroups(r.Host) {
+			//send403or200PublicAccess(w, r,
 			send401or200PublicAccess(w, r,
 				fmt.Errorf("http header 'Host: %s' not authorized for configured `vouch.domains` (is Host being sent properly?)", r.Host))
 			return
 		}
 	}
+	// if !cfg.Cfg.AllowAllUsers {
+	// 	if !claims.SiteInClaims(r.Host) {
+	// 		send401or200PublicAccess(w, r,
+	// 			fmt.Errorf("http header 'Host: %s' not authorized for configured `vouch.domains` (is Host being sent properly?)", r.Host))
+	// 		return
+	// 	}
+	// }
 
 	generateCustomClaimsHeaders(w, claims)
+	log.Debugf("value of cfg.Cfg.Headers.User: %s", cfg.Cfg.Headers.User)
+	log.Debugf("value of claims.Username: %s", claims.Username)
+	log.Debugf("value of cfg.Cfg.Headers.Success: %s", cfg.Cfg.Headers.Success)
 	w.Header().Add(cfg.Cfg.Headers.User, claims.Username)
 	w.Header().Add(cfg.Cfg.Headers.Success, "true")
 
@@ -131,4 +143,15 @@ func send401or200PublicAccess(w http.ResponseWriter, r *http.Request, e error) {
 	}
 
 	responses.Error401(w, r, e)
+}
+
+func send403or200PublicAccess(w http.ResponseWriter, r *http.Request, e error) {
+	if cfg.Cfg.PublicAccess {
+		log.Debugf("error: %s, but public access is '%v', returning OK200", e, cfg.Cfg.PublicAccess)
+		w.Header().Add(cfg.Cfg.Headers.User, "")
+		responses.OK200(w, r)
+		return
+	}
+
+	responses.Error403(w, r, e)
 }
