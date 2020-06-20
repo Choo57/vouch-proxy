@@ -73,10 +73,10 @@ func ValidateRequestHandler(w http.ResponseWriter, r *http.Request) {
 	log.Debugf("value of cfg.Cfg.Headers.Success: %s", cfg.Cfg.Headers.Success)
 	// For some reason "cfg.Cfg.Headers.User" does not get replaced as "user" and is passed down as blank, so try hardcoding it as a workaround
 	// Same issue for "cfg.Cfg.Headers.Success"
-	// w.Header().Add(cfg.Cfg.Headers.User, claims.Username)
-	// w.Header().Add(cfg.Cfg.Headers.Success, "true")
-	w.Header().Add("X-Vouch-User", claims.Username)
-	w.Header().Add("X-Vouch-Success", "true")
+	// w.Header().Add("X-Vouch-User", claims.Username)
+	// w.Header().Add("X-Vouch-Success", "true")
+	w.Header().Add(cfg.Cfg.Headers.User, claims.Username)
+	w.Header().Add(cfg.Cfg.Headers.Success, "true")
 
 	if cfg.Cfg.Headers.AccessToken != "" && claims.PAccessToken != "" {
 		w.Header().Add(cfg.Cfg.Headers.AccessToken, claims.PAccessToken)
