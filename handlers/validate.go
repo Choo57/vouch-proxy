@@ -75,8 +75,8 @@ func ValidateRequestHandler(w http.ResponseWriter, r *http.Request) {
 	// Same issue for "cfg.Cfg.Headers.Success"
 	// w.Header().Add(cfg.Cfg.Headers.User, claims.Username)
 	// w.Header().Add(cfg.Cfg.Headers.Success, "true")
-	w.Header().Add("user", claims.Username)
-	w.Header().Add("success", "true")
+	w.Header().Add("X-Vouch-User", claims.Username)
+	w.Header().Add("X-Vouch-Success", "true")
 
 	if cfg.Cfg.Headers.AccessToken != "" && claims.PAccessToken != "" {
 		w.Header().Add(cfg.Cfg.Headers.AccessToken, claims.PAccessToken)
