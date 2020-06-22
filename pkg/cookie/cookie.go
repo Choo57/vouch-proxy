@@ -39,6 +39,7 @@ func SetCookie(w http.ResponseWriter, r *http.Request, val string) {
 }
 
 func setCookie(w http.ResponseWriter, r *http.Request, val string, maxAge int) {
+	log.Debugf("setCookie called")
 	cookieName := cfg.Cfg.Cookie.Name
 	// foreach domain
 	domain := domains.Matches(r.Host)
@@ -149,6 +150,7 @@ func Cookie(r *http.Request) (string, error) {
 
 // ClearCookie get rid of the existing cookie
 func ClearCookie(w http.ResponseWriter, r *http.Request) {
+	log.Debugf("ClearCookie called")
 	cookies := r.Cookies()
 	domain := domains.Matches(r.Host)
 	// Allow overriding the cookie domain in the config file
