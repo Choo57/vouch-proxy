@@ -4,6 +4,10 @@
 <head>
   <link rel="icon" type="image/png" href="/static/img/favicon.ico" />
   <link rel="stylesheet" href="/static/css/main.css" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=7" />
   <title>Tapaas: Login Error</title>
 </head>
 
@@ -12,30 +16,36 @@
     <a href="https://www.tapaas.com/"><img src="/static/img/Tapaas650x249.png" /></a>
   </div>
 
-  <h2>Login Error</h2>
-  <h3 id="errorMsg">{{ .Msg }}</h3>
+  <div>
+    <h2>Login Error</h2>
+    <h3 id="errorMsg">{{ .Msg }}</h3>
 
-  {{ if .Testing }}
-  <p class="test">
-  <h2>-- test mode --</h2>
-  The config file includes <code>testing: true</code>
-  <p />
-  All 302 redirects will be captured and presented as links here
+    {{ if .Testing }}
+    <p class="test">
+    <h2>-- test mode --</h2>
+    The config file includes <code>testing: true</code>
+    <p />
+    All 302 redirects will be captured and presented as links here
 
-  <p />
-  If you received one of the following errors, you can clear your browser's cookies and try logging in again:
-  <p />
-  <ul style="list-style-type:disc;">
-    <li>too many redirects</li>
-    <li>invalid auth session state</li>
-  </ul>
-  <p />
+    {{ if .TestURLs }}
+    {{ range $url := .TestURLs}}
+    <ul>
+      <li><a href="{{ $url }}">{{ $url }}</a></li>
+    </ul>
+    {{ end }}
+    {{ end }}
+    {{ end }}
+    
+    <p />
+    Click on the button below to clear your session and try again.
+    <button class="button button1" onclick="clearSession()">Clear your session</button>
+    <p />
 
-  </br>
-  For any other error messages or if you still experience any issues please contact us at <b>support@tapaas.com</b> with
-  a screenshot of this error message.
-  <p />
-
+    </br>
+    For any other error messages or if you still experience any issues please contact us at <b>support@tapaas.com</b>
+    with a screenshot of this error message.
+    <p />
+  </div>
   <script src="/static/js/script.js"></script>
 </body>
 
