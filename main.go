@@ -11,14 +11,14 @@ OR CONDITIONS OF ANY KIND, either express or implied.
 package main
 
 // Vouch Proxy
-// github.com/vouch/vouch-proxy
+// github.com/Choo57/vouch-proxy
 
 /*
 
 Hello Developer!  Thanks for looking at the code!
 
 Before submitting PRs, please see the README...
-https://github.com/vouch/vouch-proxy#submitting-a-pull-request-for-a-new-feature
+https://github.com/Choo57/vouch-proxy#submitting-a-pull-request-for-a-new-feature
 
 */
 

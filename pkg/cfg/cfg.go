@@ -86,12 +86,12 @@ type branding struct {
 	UCName   string // UPPER CASE VOUCH
 	CcName   string // camelCase Vouch
 	FullName string // Vouch Proxy
-	URL      string // https://github.com/vouch/vouch-proxy
+	URL      string // https://github.com/Choo57/vouch-proxy
 }
 
 var (
 	// Branding that's our name
-	Branding = branding{"vouch", "VOUCH", "Vouch", "Vouch Proxy", "https://github.com/vouch/vouch-proxy"}
+	Branding = branding{"vouch", "VOUCH", "Vouch", "Vouch Proxy", "https://github.com/Choo57/vouch-proxy"}
 
 	// RootDir is where Vouch Proxy looks for ./config/config.yml, ./data, ./static and ./templates
 	RootDir string
