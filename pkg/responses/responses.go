@@ -91,8 +91,8 @@ func Error400(w http.ResponseWriter, r *http.Request, e error) {
 	w.Header().Set(cfg.Cfg.Headers.Error, e.Error())
 	w.WriteHeader(http.StatusBadRequest)
 	addErrandCancelRequest(r)
-	//renderError(w, "400 Bad Request")
-	RenderIndex(w, "400 Bad Request")
+	renderError(w, "400 Bad Request")
+	//RenderIndex(w, "400 Bad Request")
 }
 
 // Error401 Unauthorized the standard error
@@ -104,9 +104,9 @@ func Error401(w http.ResponseWriter, r *http.Request, e error) {
 	cookie.ClearCookie(w, r)
 	w.Header().Set(cfg.Cfg.Headers.Error, e.Error())
 	w.WriteHeader(http.StatusBadRequest)
-	http.Error(w, e.Error(), http.StatusUnauthorized)
-	//renderError(w, "401 Unauthorized")
-	RenderIndex(w, "401 Unauthorized")
+	//http.Error(w, e.Error(), http.StatusUnauthorized)
+	renderError(w, "401 Unauthorized")
+	//RenderIndex(w, "401 Unauthorized")
 }
 
 // Error403 Forbidden
@@ -118,8 +118,8 @@ func Error403(w http.ResponseWriter, r *http.Request, e error) {
 	cookie.ClearCookie(w, r)
 	w.Header().Set(cfg.Cfg.Headers.Error, e.Error())
 	w.WriteHeader(http.StatusForbidden)
-	//renderError(w, "403 Forbidden")
-	RenderIndex(w, "403 Forbidden")
+	renderError(w, "403 Forbidden")
+	//RenderIndex(w, "403 Forbidden")
 }
 
 // cfg.ErrCtx is tested by `jwtmanager.JWTCacheHandler`
