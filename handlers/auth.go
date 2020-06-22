@@ -52,6 +52,7 @@ func CallbackHandler(w http.ResponseWriter, r *http.Request) {
 	// did the IdP return an error when they redirected back to /auth
 	errorIDP := r.URL.Query().Get("error")
 	if errorIDP != "" {
+		log.Debug("/auth.go errorIDP is not blank")
 		errorDescription := r.URL.Query().Get("error_description")
 		//responses.Error401(w, r, fmt.Errorf("/auth Error from IdP: %s - %s", errorIDP, errorDescription))
 		responses.Error403(w, r, fmt.Errorf("/auth Error from IdP: %s - %s", errorIDP, errorDescription))
