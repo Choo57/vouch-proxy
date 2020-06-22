@@ -99,8 +99,8 @@ func Error401(w http.ResponseWriter, r *http.Request, e error) {
 	addErrandCancelRequest(r)
 	cookie.ClearCookie(w, r)
 	w.Header().Set(cfg.Cfg.Headers.Error, e.Error())
-	http.Error(w, e.Error(), http.StatusUnauthorized)
-	// renderError(w, "401 Unauthorized")
+	//http.Error(w, e.Error(), http.StatusUnauthorized)
+	renderError(w, "401 Unauthorized")
 }
 
 // Error403 Forbidden

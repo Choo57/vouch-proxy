@@ -58,7 +58,7 @@ h3 {
 }
 
 .clearButton {
-  border: none;
+  border: 2px solid #4CAF50;
   color: white;
   padding: 16px 32px;
   text-align: center;
@@ -69,8 +69,7 @@ h3 {
   transition-duration: 0.4s;
   cursor: pointer;
   border-radius: 5px;
-  background-color: #4CAF50;
-  margin-top: 15px;
+  background-color: #4CAF50;;
 }
 
 .clearButton:hover {
