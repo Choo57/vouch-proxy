@@ -19,27 +19,14 @@ pre {
 
 body {
   background-color: #ffffff;
-  margin: auto;
-  width: 560px;
-  border: 1px solid;
-  padding: 10px 10px 10px 10px;
-  margin-top:30px;
-  font-family: Tahoma, Geneva, sans-serif;
-  font-size: 85%;
-  overflow-wrap: break-word;
-}
-
-h3 {
-  word-break: break-all;
-  padding-bottom: 15px;
+  margin: 5px 10px;
 }
 
 .top img {
-  width: 350px;
+  height: 50px;
+  width: 50px;
   margin: 10px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  vertical-align: middle;
 }
 
 .top span {
@@ -49,9 +36,16 @@ h3 {
 
 .top a {
   text-decoration: none;
+}
+
+.top a,
+.bottom a {
   color: #000000;
 }
-  
+
+.content {
+  margin: 5px 10px;
+}
 
 .test {
   clear: both;
