@@ -59,7 +59,7 @@ func RenderIndex(w http.ResponseWriter, msg string) {
 // renderError html error page
 // something terse for the end user
 func renderError(w http.ResponseWriter, msg string) {
-	log.Debugf("rendering error for user: %s", msg)
+	log.Debugf("responses.renderError: rendering error for user: %s", msg)
 	if err := indexTemplate.Execute(w, &Index{Msg: msg}); err != nil {
 		log.Error(err)
 	}
