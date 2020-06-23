@@ -4,12 +4,19 @@ if (errorMsg.includes("Forbidden")) {
     document.getElementById('withoutButton').style.display = 'block';
     //Still clear the session   
     setTimeout(function () {
+        //Logout URL on dev "https://testvouch.tapaas.com/logout";
         (function () {
-            //Logout URL on dev "https://testvouch.tapaas.com/logout";
             (new Image()).src = "https://" + window.location.hostname + "/logout";
         })();
-        console.log("Session cleared: " + "https://" + window.location.hostname + "/logout")
-    }, 1000); // Wait a bit for the cookie to get set before clearing it
+        console.log("Vouch session cleared: " + "https://" + window.location.hostname + "/logout")
+        
+        //Okta signout URL on dev ""https://id.tapaas.com/login/signout?fromURI=https://demo15.tapaas.com/dashboard"";
+        (function () {
+            (new Image()).src = "https://id.tapaas.com/login/signout";
+        })();
+        console.log("IDP session cleared: " + "https://id.tapaas.com/login/signout")
+
+    }, 500); // Wait a bit for the cookie to get set before clearing it
 } else {
     document.getElementById('showButton').style.display = 'block';
 }

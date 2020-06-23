@@ -69,22 +69,11 @@ h3 {
   transition-duration: 0.4s;
   cursor: pointer;
   border-radius: 5px;
-  background-color: #4CAF50;;
+  background-color: #4CAF50;
+  outline-color: #4CAF50 !important;
 }
 
-.clearButton:hover {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #4CAF50;
-}
-
-.clearButton:focus {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #4CAF50;
-}
-
-.clearButton:active {
+.clearButton:hover:focus:active {
   background-color: white; 
   color: black; 
   border: 2px solid #4CAF50;
