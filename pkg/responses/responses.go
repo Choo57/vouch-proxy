@@ -50,7 +50,7 @@ func Configure() {
 
 // RenderIndex render the response as an HTML page, mostly used in testing
 func RenderIndex(w http.ResponseWriter, msg string) {
-	log.Debugf("/responses.RenderIndex is called now")
+	log.Debug("/responses.RenderIndex is called now")
 	if err := indexTemplate.Execute(w, &Index{Msg: msg, TestURLs: cfg.Cfg.TestURLs, Testing: cfg.Cfg.Testing}); err != nil {
 		log.Error(err)
 	}
@@ -85,7 +85,7 @@ func Redirect302(w http.ResponseWriter, r *http.Request, rURL string) {
 
 // Error400 Bad Request
 func Error400(w http.ResponseWriter, r *http.Request, e error) {
-	log.Debugf("/responses.Error400 is called now")
+	log.Debug("/responses.Error400 is called now")
 	log.Error(e)
 	cookie.ClearCookie(w, r)
 	w.Header().Set(cfg.Cfg.Headers.Error, e.Error())
@@ -98,12 +98,12 @@ func Error400(w http.ResponseWriter, r *http.Request, e error) {
 // Error401 Unauthorized the standard error
 // this is captured by nginx, which converts the 401 into 302 to the login page
 func Error401(w http.ResponseWriter, r *http.Request, e error) {
-	log.Debugf("/responses.Error401 is called now")
+	log.Debug("/responses.Error401 is called now")
 	log.Error(e)
 	addErrandCancelRequest(r)
 	cookie.ClearCookie(w, r)
 	w.Header().Set(cfg.Cfg.Headers.Error, e.Error())
-	w.WriteHeader(http.StatusBadRequest)
+	//w.WriteHeader(http.StatusBadRequest)
 	//http.Error(w, e.Error(), http.StatusUnauthorized)
 	renderError(w, "401 Unauthorized")
 	//RenderIndex(w, "401 Unauthorized")
@@ -112,7 +112,7 @@ func Error401(w http.ResponseWriter, r *http.Request, e error) {
 // Error403 Forbidden
 // if there's an error during /auth or if they don't pass validation in /auth
 func Error403(w http.ResponseWriter, r *http.Request, e error) {
-	log.Debugf("/responses.Error403 is called now")
+	log.Debug("/responses.Error403 is called now")
 	log.Error(e)
 	addErrandCancelRequest(r)
 	cookie.ClearCookie(w, r)

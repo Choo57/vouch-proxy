@@ -161,7 +161,7 @@ func ParseTokenString(tokenString string) (*jwt.Token, error) {
 
 // Check for Site matching group in the PAcess Token
 func (claims *VouchClaims) SiteInGroups(site string) bool {
-	log.Debugf("SiteInGroups site: %s", site)
+	log.Debugf("jwtmanager: SiteInGroups site: %s", site)
 	token, err := jwt.Parse(claims.PAccessToken, func(token *jwt.Token) (interface{}, error) {
 	    return []byte(cfg.Cfg.JWT.Secret), nil
 	})

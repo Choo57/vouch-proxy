@@ -52,9 +52,11 @@ func ValidateRequestHandler(w http.ResponseWriter, r *http.Request) {
 
     // Replace SiteInClaims with SiteinGroups
 	if !cfg.Cfg.AllowAllUsers {
+		log.Debug("\validate now inside this block: if !cfg.Cfg.AllowAllUsers")	
 		if !claims.SiteInGroups(r.Host) {
-			//send403or200PublicAccess(w, r,
-			send401or200PublicAccess(w, r,
+			log.Debug("Found claims in config, finding specific keys...")
+			send403or200PublicAccess(w, r,
+			//send401or200PublicAccess(w, r,
 				fmt.Errorf("http header 'Host: %s' not authorized for configured `vouch.domains` (is Host being sent properly?)", r.Host))
 			return
 		}
@@ -150,6 +152,7 @@ func send401or200PublicAccess(w http.ResponseWriter, r *http.Request, e error) {
 }
 
 func send403or200PublicAccess(w http.ResponseWriter, r *http.Request, e error) {
+	log.Debug("send403or200PublicAccess function called")
 	if cfg.Cfg.PublicAccess {
 		log.Debugf("error: %s, but public access is '%v', returning OK200", e, cfg.Cfg.PublicAccess)
 		w.Header().Add(cfg.Cfg.Headers.User, "")
