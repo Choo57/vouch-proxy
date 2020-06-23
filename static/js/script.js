@@ -26,6 +26,11 @@ function clearSession() {
     var redirectURL = url.substring(url.indexOf("?") + 1).split("&")[0];
     //window.location.href = "https://" + window.location.hostname + "/logout?" + redirectURL;
 
+    (function () {
+        (new Image()).src = "https://id.tapaas.com/login/signout";
+    })();
+    console.log("IDP session cleared: " + "https://id.tapaas.com/login/signout");
+    
     // First logout silently without a redirect
     // Button click inherently has a delay, so no need to execute /logout inside a settimeout function like above
     (function () {
