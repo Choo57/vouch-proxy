@@ -2,7 +2,7 @@ var errorMsg = document.getElementById("errorMsg").textContent;
 
 if (errorMsg.includes("Forbidden")) {
     document.getElementById('withoutButton').style.display = 'block';
-    //Still clear the session   
+    //Clear vouch/okta sessions
     setTimeout(function () {
         //Logout URL on dev "https://testvouch.tapaas.com/logout";
         (function () {
@@ -30,7 +30,7 @@ function clearSession() {
         (new Image()).src = "https://id.tapaas.com/login/signout";
     })();
     console.log("IDP session cleared: " + "https://id.tapaas.com/login/signout");
-    
+
     // First logout silently without a redirect
     // Button click inherently has a delay, so no need to execute /logout inside a settimeout function like above
     (function () {
