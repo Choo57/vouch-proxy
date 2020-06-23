@@ -8,13 +8,13 @@ if (errorMsg.includes("Forbidden")) {
         (function () {
             (new Image()).src = "https://" + window.location.hostname + "/logout";
         })();
-        console.log("Vouch session cleared: " + "https://" + window.location.hostname + "/logout")
+        console.log("Vouch session cleared: " + "https://" + window.location.hostname + "/logout");
         
         //Okta signout URL on dev ""https://id.tapaas.com/login/signout?fromURI=https://demo15.tapaas.com/dashboard"";
         (function () {
             (new Image()).src = "https://id.tapaas.com/login/signout";
         })();
-        console.log("IDP session cleared: " + "https://id.tapaas.com/login/signout")
+        console.log("IDP session cleared: " + "https://id.tapaas.com/login/signout");
 
     }, 500); // Wait a bit for the cookie to get set before clearing it
 } else {
