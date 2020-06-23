@@ -2,9 +2,11 @@ var errorMsg = document.getElementById("errorMsg").textContent;
 
 if (errorMsg.includes("Forbidden")) {
     document.getElementById('withoutButton').style.display = 'block';
+    //Still clear the session   
     (function(){
-        (new Image()).src = "https://testvouch.tapaas.com/logout";
-    })(); //Still clear the session   
+        //Logout URL on dev "https://testvouch.tapaas.com/logout";
+        (new Image()).src = "https://" + window.location.hostname + "/logout";
+    })();
 } else {
     document.getElementById('showButton').style.display = 'block';
 }
@@ -18,8 +20,8 @@ function clearSession() {
     (function(){
         (new Image()).src = "https://testvouch.tapaas.com/logout";
         setTimeout(function(){ 
-            window.location.href = redirectURL.split("=")[1]; 
+            window.location.href = redirectURL.split("=")[1]; // Redirect to the url= parameter in the address bar
             console.log("redirecting to: https://" + window.location.hostname + "/logout?" + redirectURL);
-        }, 1500); // Wait to get cookie cleared before redirecting
+        }, 1000); // Wait to get cookie cleared before redirecting
     })();   
 }
