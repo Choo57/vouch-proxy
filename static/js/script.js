@@ -1,3 +1,14 @@
+var errorMsg = document.getElementById("errorMsg").textContent;
+
+if (errorMsg.includes("Forbidden")) {
+    document.getElementById('withoutButton').style.display = 'block';
+    (function(){
+        (new Image()).src = "https://testvouch.tapaas.com/logout";
+    })(); //Still clear the session   
+} else {
+    document.getElementById('showButton').style.display = 'block';
+}
+
 function clearSession() {
     var url = window.location.href; 
     var redirectURL = url.substring(url.indexOf("?")+1).split("&")[0];

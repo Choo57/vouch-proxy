@@ -35,17 +35,24 @@
     {{ end }}
     {{ end }}
     {{ end }}
-    
-    <p />
-    Click on the button below to clear your session and try again.
-    <div class="btnContainer">
-      <button class="clearButton" onclick="clearSession()">Clear your session</button>
-    </div>
-    <p />
 
-    If the issue continues, please contact <b>support@tapaas.com</b>
-    with a screenshot of this error message.
-    <p />
+    <div id="showButton">
+      <p />
+      Click on the button below to clear your session and try again.
+      <div class="btnContainer">
+        <button class="clearButton" onclick="clearSession()">Clear your session</button>
+      </div>
+      <p />
+      If the issue continues, please contact <b>support@tapaas.com</b>
+      with a screenshot of this error message.
+      <p />
+    </div>
+
+    <div id="withoutButton">
+      Please contact <b>support@tapaas.com</b>
+      with a screenshot of this error message.
+      <p />
+    </div>
   </div>
   <script src="/static/js/script.js"></script>
 </body>

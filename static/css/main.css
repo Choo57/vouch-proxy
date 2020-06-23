@@ -80,5 +80,13 @@ h3 {
 
 .btnContainer {
   text-align:center; 
-  display:block
+  display:block;
+}
+
+#showButton {
+  display:none;
+}
+
+#withoutButton {
+  display:none;
 }
