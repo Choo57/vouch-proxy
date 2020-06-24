@@ -56,7 +56,7 @@ h3 {
   clear: both;
 }
 
-.clearButton {
+#clearButton {
   border: 2px solid #4CAF50;
   color: white;
   padding: 16px 32px;
@@ -74,13 +74,13 @@ h3 {
   width: 205px;
 }
 
-.clearButton:hover:focus:active {
+#clearButton:hover:focus:active {
   background-color: white; 
   color: black; 
   border: 2px solid #4CAF50;
 }
 
-.clearButton:visited {
+#clearButton:visited {
   background-color: white; 
   color: black; 
   border: 2px solid #4CAF50;
