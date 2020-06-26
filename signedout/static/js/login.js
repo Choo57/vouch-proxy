@@ -1,4 +1,4 @@
 function signInButton() {
-    var win = window.open('https://demo15.tapaas.com/dashboard', '_blank');
+    var win = window.open(window.location.hostname+'/dashboard', '_blank');
     win.focus();
 }
