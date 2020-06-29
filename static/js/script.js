@@ -4,8 +4,7 @@ var clearButton = document.getElementById("clearButton");
 if (errorMsg.includes("Forbidden")) {
     document.getElementById('withoutButton').style.display = 'block';
     //Clear vouch/okta sessions
-    setTimeout(function () {
-        //Logout URL on dev "https://testvouch.tapaas.com/logout";
+    setTimeout(function () {        
         clearSessions();
     }, 500); // Add a short delay before clearing cookie
 } else {
@@ -41,6 +40,7 @@ function clearSessions() {
     })();
     console.log("IDP session cleared: " + "https://id.tapaas.com/login/signout");
 
+    //Logout URL on dev "https://testvouch.tapaas.com/logout";
     (function () {
         (new Image()).src = "https://" + window.location.hostname + "/logout";
     })();

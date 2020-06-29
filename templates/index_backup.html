@@ -8,7 +8,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=7" />
-  <title>Tapaas - Session expired</title>
+  <title>Tapaas - Login Error</title>
 </head>
 
 <body>
@@ -16,8 +16,9 @@
     <a href="https://www.tapaas.com/"><img src="/static/img/Tapaas650x249.png" /></a>
   </div>
 
-  <div id="showButton">
-    <h2 id="errorMsg">Session expired</h2>
+  <div>
+    <h2>Login Error</h2>
+    <h3 id="errorMsg">{{ .Msg }}</h3>
 
     {{ if .Testing }}
     <p class="test">
@@ -35,41 +36,21 @@
     {{ end }}
     {{ end }}
 
-    <div>
+    <div id="showButton">
       <p />
-      Click the button below to clear your session and login again.
+      Click the button below to clear your session and try again.
       <div class="btnContainer">
         <button id="clearButton" onclick="clearSessionButton()">Clear your session</button>
       </div>
       <p />
-      If you have any questions, please contact <b>support@tapaas.com</b>
-      with a screenshot of this page <span class="grey">(Code: {{ .Msg }})</span>.
+      If the issue continues, please contact <b>support@tapaas.com</b>
+      with a screenshot of this error message.
       <p />
     </div>
-  </div>
 
-  <div id="forbidden">
-    <h2 id="errorMsg">{{ .Msg }}</h2>
-
-    {{ if .Testing }}
-    <p class="test">
-    <h2>-- test mode --</h2>
-    The config file includes <code>testing: true</code>
-    <p />
-    All 302 redirects will be captured and presented as links here
-
-    {{ if .TestURLs }}
-    {{ range $url := .TestURLs}}
-    <ul>
-      <li><a href="{{ $url }}">{{ $url }}</a></li>
-    </ul>
-    {{ end }}
-    {{ end }}
-    {{ end }}
-
-    <div>
+    <div id="withoutButton">
       Please contact <b>support@tapaas.com</b>
-      to get your account permissions checked.
+      with a screenshot of this error message.
       <p />
     </div>
   </div>
