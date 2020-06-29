@@ -2,7 +2,7 @@ var errorMsg = document.getElementById("errorMsg").textContent;
 var clearButton = document.getElementById("clearButton");
 
 if (errorMsg.includes("Forbidden")) {
-    document.getElementById('withoutButton').style.display = 'block';
+    document.getElementById('forbidden').style.display = 'block';
     //Clear vouch/okta sessions
     setTimeout(function () {        
         clearSessions();
