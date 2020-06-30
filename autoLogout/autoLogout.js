@@ -4,7 +4,7 @@ console.log("Tapaas Autologout initiated");
 
 var freq = 900000  // Frequency in ms to check if autologout time has arrived (900000 ms = 15 minutes). Should be less than 1 hour so the 00:00 - 00:59 timewindow to logout is not missed
 
-var loggedout = localStorage.getItem('firstOpenedOn');
+var loggedout = localStorage.getItem('loggedout');
 if (loggedout == null) { // First time access, no loggedout key in local storage
     loggedout = false;
     localStorage.setItem('loggedout', loggedout); //Store loggedout value as false fir the first login
@@ -20,7 +20,7 @@ function checkDate() {
     console.log("time: " + time);
     if ((today == 6) && (time == 0)){ // Only sign users out if they leave their dashboards running on Saturday between 00:00 - 00:59 local time. 
         if (!loggedout) {
-            autologout(); // If already logged out once today, do not sign the user out again
+            autologout(); // If already logged out once today, do not sign the user out again during the Saturday 00:00 - 00:59 timewindow
         }        
     } else {
         loggedout = false;
