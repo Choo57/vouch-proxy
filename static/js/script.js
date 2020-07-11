@@ -22,7 +22,7 @@ function clearSessionButton() {
 
     if (urlParamIndex > 0) {
         //var redirectURL = url.substring(urlParamIndex + 1).split("&")[0];
-        var redirectURL = "https://id.tapaas.com"
+        var redirectURL = "url=https://id.tapaas.com"
         //window.location.href = "https://" + window.location.hostname + "/logout?" + redirectURL;
 
         // Do not attempt to redirect if the URL does not include a url= parameter to a tapaas domain
