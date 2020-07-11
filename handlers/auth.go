@@ -137,12 +137,13 @@ func verifyUser(u interface{}) (bool, error) {
 		return false, fmt.Errorf("verifyUser: user.TeamMemberships %s not found in TeamWhiteList: %s for user %s", user.TeamMemberships, cfg.Cfg.TeamWhiteList, user.Username)
 
 	// Domains
-	case len(cfg.Cfg.Domains) != 0:
-		if domains.IsUnderManagement(user.Email) {
-			log.Debugf("verifyUser: Success! Email %s found within a "+cfg.Branding.FullName+" managed domain", user.Email)
-			return true, nil
-		}
-		return false, fmt.Errorf("verifyUser: Email %s is not within a "+cfg.Branding.FullName+" managed domain", user.Email)
+	// Removing this block as we do not need to check if a user's email domain is whitelisted
+	// case len(cfg.Cfg.Domains) != 0:
+	// 	if domains.IsUnderManagement(user.Email) {
+	// 		log.Debugf("verifyUser: Success! Email %s found within a "+cfg.Branding.FullName+" managed domain", user.Email)
+	// 		return true, nil
+	// 	}
+	// 	return false, fmt.Errorf("verifyUser: Email %s is not within a "+cfg.Branding.FullName+" managed domain", user.Email)
 
 	// nothing configured, allow everyone through
 	default:
