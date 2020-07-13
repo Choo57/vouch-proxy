@@ -5,25 +5,23 @@ if (errorMsg.includes("Forbidden")) {
     document.getElementById('forbidden').style.display = 'block';
     //Clear vouch/okta sessions
     setTimeout(function () {        
-        clearSessions(false); // Do not redirect to id.tapaas.com if account is not permissioned
+        clearSessions();
     }, 500); // Add a short delay before clearing cookie
 } else {
     document.getElementById('showButton').style.display = 'block';
 }
 
-function clearSessionButton(redirect) {
+function clearSessionButton() {
     clearSessions();
     clearButton.innerHTML = "Session Cleared!"
 
     // Expected URL in address bar: https://testvouch.tapaas.com/login?url=https://demo.tapaas.com/dashboard/&vouch-failcount=&X-Vouch-Token=&error=
     // URL after login page timeout: https://testvouch.tapaas.com/auth?code=dfdsfdsfmAdRRK (no url= parameter)
-    if (redirect) {
-        var redirectURL = "url=https://id.tapaas.com"
-        setTimeout(function () {
-            window.location.href = "https://" + window.location.hostname + "/logout?" + redirectURL;
-            console.log("redirecting to: https://" + window.location.hostname + "/logout?" + redirectURL);     
-        }, 1000); // Wait to get cookie cleared before redirecting
-    }    
+    var redirectURL = "url=https://id.tapaas.com"
+    setTimeout(function () {
+        window.location.href = "https://" + window.location.hostname + "/logout?" + redirectURL;
+        console.log("redirecting to: https://" + window.location.hostname + "/logout?" + redirectURL);     
+    }, 1000); // Wait to get cookie cleared before redirecting 
 }
 
 function clearSessions() {
