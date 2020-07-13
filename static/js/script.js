@@ -17,22 +17,21 @@ function clearSessionButton() {
 
     // Expected URL in address bar: https://testvouch.tapaas.com/login?url=https://demo.tapaas.com/dashboard/&vouch-failcount=&X-Vouch-Token=&error=
     // URL after login page timeout: https://testvouch.tapaas.com/auth?code=dfdsfdsfmAdRRK (no url= parameter)
-    var redirectURL = "url=https://id.tapaas.com"
     setTimeout(function () {
-        window.location.href = "https://" + window.location.hostname + "/logout?" + redirectURL;
-        console.log("redirecting to: https://" + window.location.hostname + "/logout?" + redirectURL);     
+        window.location.href = "https://id.tapaas.com";
+        console.log("redirecting to: https://id.tapaas.com");     
     }, 1000); // Wait to get cookie cleared before redirecting 
 }
 
 function clearSessions() {
-    (function () {
-        (new Image()).src = "https://id.tapaas.com/login/signout";
-    })();
-    console.log("IDP session cleared: " + "https://id.tapaas.com/login/signout");
-
     //Logout URL on dev "https://testvouch.tapaas.com/logout";
     (function () {
         (new Image()).src = "https://" + window.location.hostname + "/logout";
     })();
     console.log("Vouch session cleared: " + "https://" + window.location.hostname + "/logout");
+
+    (function () {
+        (new Image()).src = "https://id.tapaas.com/login/signout";
+    })();
+    console.log("IDP session cleared: " + "https://id.tapaas.com/login/signout");
 }
