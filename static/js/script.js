@@ -20,6 +20,7 @@ function clearSessionButton(redirect) {
     if (redirect) {
         var redirectURL = "url=https://id.tapaas.com"
         setTimeout(function () {
+            window.location.href = "https://" + window.location.hostname + "/logout?" + redirectURL;
             console.log("redirecting to: https://" + window.location.hostname + "/logout?" + redirectURL);     
         }, 1000); // Wait to get cookie cleared before redirecting
     }    
