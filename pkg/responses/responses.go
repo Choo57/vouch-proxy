@@ -91,7 +91,8 @@ func Error400(w http.ResponseWriter, r *http.Request, e error) {
 	w.Header().Set(cfg.Cfg.Headers.Error, e.Error())
 	w.WriteHeader(http.StatusBadRequest)
 	addErrandCancelRequest(r)
-	renderError(w, "400 Bad Request")
+	renderError(w, e.Error())
+	//renderError(w, "400 Bad Request")
 }
 
 // Error401 Unauthorized the standard error

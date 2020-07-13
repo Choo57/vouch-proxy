@@ -55,7 +55,7 @@ func ValidateRequestHandler(w http.ResponseWriter, r *http.Request) {
 		log.Debug("\validate now inside this block: if !cfg.Cfg.AllowAllUsers")	
 		if !claims.SiteInGroups(r.Host) {
 			log.Debug("Found claims in config, finding specific keys...")
-			responses.Error403(w, r,
+			responses.Error400(w, r,
 			//send403or200PublicAccess(w, r,
 			//send401or200PublicAccess(w, r,
 				fmt.Errorf("http header 'Host: %s' not authorized for configured `vouch.domains` (is Host being sent properly?)", r.Host))
