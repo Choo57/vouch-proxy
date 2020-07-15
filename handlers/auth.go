@@ -37,6 +37,7 @@ func CallbackHandler(w http.ResponseWriter, r *http.Request) {
 	// Handle the exchange code to initiate a transport.
 
 	session, err := sessstore.Get(r, cfg.Cfg.Session.Name)
+	log.Debugf("/auth Session.Name: %s", cfg.Cfg.Session.Name)
 	if err != nil {
 		responses.Error400(w, r, fmt.Errorf("/auth %w: could not find session store %s", err, cfg.Cfg.Session.Name))
 		return
@@ -44,6 +45,7 @@ func CallbackHandler(w http.ResponseWriter, r *http.Request) {
 
 	// is the nonce "state" valid?
 	queryState := r.URL.Query().Get("state")
+	log.Debugf("/auth stored session state: %s", session.Values["state"])
 	if session.Values["state"] != queryState {
 		responses.Error400(w, r, fmt.Errorf("/auth Invalid session state: stored %s, returned %s", session.Values["state"], queryState))
 		return
