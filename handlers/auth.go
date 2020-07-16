@@ -45,6 +45,12 @@ func CallbackHandler(w http.ResponseWriter, r *http.Request) {
 
 	// is the nonce "state" valid?
 	queryState := r.URL.Query().Get("state")
+
+	// Pass state=forbidden to return 403 forbidden error of vouch
+	if queryState == "forbidden" {
+		log.Debug("/auth state=forbidden received")
+		responses.Error403(w, r, fmt.Errorf("/auth forbidden state received in query: %s", queryState))
+	}
 	log.Debugf("/auth stored session state: %s", session.Values["state"])
 	if session.Values["state"] != queryState {
 		responses.Error400(w, r, fmt.Errorf("/auth Invalid session state: stored %s, returned %s", session.Values["state"], queryState))
