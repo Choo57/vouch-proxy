@@ -25,9 +25,10 @@ import (
 	"github.com/Choo57/vouch-proxy/pkg/responses"
 	"golang.org/x/oauth2"
 )
+// see https://github.com/vouch/vouch-proxy/issues/282
+var errTooManyRedirects = errors.New("Too many unsuccessful authorization attempts for the requested URL")
 
-var errTooManyRedirects = errors.New("too many redirects for requested URL")
-
+const failCountLimit = 6
 // LoginHandler /login
 // currently performs a 302 redirect to Google
 func LoginHandler(w http.ResponseWriter, r *http.Request) {
@@ -78,7 +79,7 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		log.Error(err)
 	}
 
-	if failcount > 2 {
+	if failcount > failCountLimit {
 		var vouchError = r.URL.Query().Get("error")
 		responses.Error400(w, r, fmt.Errorf("/login %w for %s - %s", errTooManyRedirects, requestedURL, vouchError))
 		return
