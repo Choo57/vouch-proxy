@@ -50,6 +50,7 @@ func CallbackHandler(w http.ResponseWriter, r *http.Request) {
 	if queryState == "forbidden" {
 		log.Debug("/auth state=forbidden received ")
 		responses.Error403(w, r, fmt.Errorf("/auth forbidden state received in query: %s", queryState))
+		return
 	}
 	log.Debugf("/auth stored session state: %s", session.Values["state"])
 	if session.Values["state"] != queryState {
